@@ -9,6 +9,17 @@ import path from "path";
 import { sendEmail, getEmailTemplate } from "./src/services/emailService.ts";
 
 dotenv.config();
+const gmailUser = process.env.GMAIL_USER;
+const gmailPass = process.env.GMAIL_APP_PASS;
+const adminEmail = process.env.ADMIN_EMAIL;
+
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: gmailUser,
+    pass: gmailPass,
+  },
+});
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const JWT_SECRET = process.env.JWT_SECRET || "edureserve-secret-key-2026";
 
